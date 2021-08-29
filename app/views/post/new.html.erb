@@ -1,0 +1,16 @@
+<h1>NEW POST</h1>
+
+<%= form_with model: @post, url:post_create_path do |form| %>
+   <div class="field"> 
+    <%= form.label 'Título del Post' %>
+    <%= form.text_field  :title%>
+  </div>
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field  :description %>
+  </div>
+  <div class="field">
+    <button type="submit" class="btn btn-success">Save</button>
+  </div>
+
+<% end %>
