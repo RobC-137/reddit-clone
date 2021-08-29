@@ -4,9 +4,9 @@
 #
 #  id          :integer          not null, primary key
 #  description :text
-#  downvotes   :integer
+#  downvotes   :integer          default(0)
 #  title       :string
-#  upvotes     :integer
+#  upvotes     :integer          default(0)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  user_id     :integer          not null
