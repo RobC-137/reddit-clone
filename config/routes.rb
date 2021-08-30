@@ -3,6 +3,7 @@
 
 Rails.application.routes.draw do
   root 'post#index'
+  get '/post/:id', to: 'post#show', as: 'post'
   get 'post/index'
   get 'post/new'
   post 'post/create'

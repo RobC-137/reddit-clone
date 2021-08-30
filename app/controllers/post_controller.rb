@@ -1,10 +1,14 @@
 class PostController < ApplicationController
+  before_action :set_post, only: %i[ show  ]
   def index
     @posts = Post.all
   end
 
   def new
     @post = Post.new
+  end
+
+  def show
   end
 
   def create
@@ -21,6 +25,10 @@ class PostController < ApplicationController
 
   end
   private
+    def set_post
+      @post = Post.find(params[:id])
+    end
+
     def post_params
       params.require(:post).permit(:description, :title)
     end
