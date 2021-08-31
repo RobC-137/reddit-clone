@@ -9,6 +9,15 @@ class PostController < ApplicationController
   end
 
   def show
+    @root_comment = Comment.roots.find_by(post_id: params[:id])
+    @comments = Comment.preload(:rich_text_content).descendants_of(@root_comment).arrange_serializable do |parent, children|
+      {
+         id: parent.id,
+         children: children,
+         content: parent.content,
+         depth: parent.depth
+      }
+    end
   end
 
   def create

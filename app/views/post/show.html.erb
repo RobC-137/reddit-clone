@@ -1,2 +1,16 @@
-<h1>show</h1>
-<%= @post.title%>
+
+<div>
+    <h1>
+        <%= @post.title%>
+    </h1>
+    <div id="comment-<%= @root_comment.id %>">
+        <%= link_to 'Add comment', {controller: "comments", action: "new", parent_id: @root_comment}, remote: true %>
+    </div>
+</div>
+<% @comments.each do |comment| %>
+    <div class="card comment-outer-container" >
+        <div class="card-body">
+            <%= cell(CommentCell, comment) %>
+        </div>
+    </div>
+<% end %>

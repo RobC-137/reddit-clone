@@ -1,0 +1,13 @@
+<div style=" padding-left: <%= 5*depth %>px; padding-top: 10px; ">
+    <div id="comment-<%= id %>">
+        <%= content %>
+        <%= link_to 'Reply', {controller: "comments", action: "new", parent_id: id}, remote: true, style: 'font-size: small' %>
+    </div>
+    <% if children&.any? %>
+        <% children.each do |child| %>
+            <div style="border-left: 1px solid gray;">
+                <%= cell(CommentCell, child) %>
+            </div>
+        <% end %>
+    <% end %>
+</div>

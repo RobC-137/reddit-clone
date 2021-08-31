@@ -1,0 +1,6 @@
+<%comment_id = "#comment-#{@parent_id} a" %>
+var element = document.querySelector("<%= comment_id %>");
+element.insertAdjacentHTML('afterend', '<%= escape_javascript(render partial: 'form', locals: {parent_id: @parent_id}) %>') ;
+function remove() {
+  document.getElementById("new-comment-form").remove();
+}

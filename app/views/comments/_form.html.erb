@@ -1,0 +1,14 @@
+<div id="new-comment-form">
+  <%= form_with model: Comment.new, url:comments_create_path do |form| %>
+    <%= form.hidden_field :parent_id, value: parent_id%>
+    <div class="field">
+      <%= form.label :content %>
+      <%= form.rich_text_area :content %>
+    </div>
+    <div class="field">
+      <button class="btn btn-success" onclick="remove(this)">Cancel</button>
+      <button type="submit" class="btn btn-success">Save</button>
+    </div>
+
+  <% end %>
+</div>

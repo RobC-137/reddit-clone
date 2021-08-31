@@ -3,6 +3,8 @@
 
 Rails.application.routes.draw do
   root 'post#index'
+  get 'comments/new'
+  post 'comments/create'
   get 'post/index'
   get 'post/new'
   post 'post/create'
