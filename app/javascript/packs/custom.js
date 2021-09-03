@@ -1,5 +1,5 @@
 displayLink = (el) => {
-    el.style.display = '';
+    el.style.pointerEvents = '';
 }
 
 remove = (el) => {
@@ -11,5 +11,5 @@ remove = (el) => {
 }
 
 hideLink = (el) => {
-    el.style.display = 'none';
+    el.style.pointerEvents = 'none';
 }
