@@ -1,9 +1,7 @@
-class PostCell < Cell::ViewModel
+class PostCell < ApplicationCell
     alias post model
     def index
         render
     end
 
-    def show
-    end
 end

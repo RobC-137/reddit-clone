@@ -1,5 +1,6 @@
-class CommentCell < Cell::ViewModel
+class CommentCell < ApplicationCell
     alias comment model
+
     private 
         def id
             comment[:id]

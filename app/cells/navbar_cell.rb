@@ -1,3 +1,3 @@
-class NavbarCell < Cell::ViewModel
+class NavbarCell < ApplicationCell
     alias current_user model
 end
