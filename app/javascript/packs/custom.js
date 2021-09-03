@@ -10,6 +10,6 @@ remove = (el) => {
     commentElement.remove();
 }
 
-hideLink = (el) => {
+disableLink = (el) => {
     el.style.pointerEvents = 'none';
 }
