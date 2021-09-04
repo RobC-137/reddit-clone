@@ -17,4 +17,12 @@ class CommentCell < ApplicationCell
         def depth
             comment[:depth]
         end
+
+        def username
+            comment[:username]
+        end
+
+        def created_at
+            comment[:created_at]
+        end
 end
