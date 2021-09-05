@@ -18,7 +18,8 @@ class PostController < ApplicationController
          content: parent.content,
          depth: parent.depth,
          username: user&.username.presence || '[Deleted]',
-         created_at: parent.created_at
+         created_at: parent.created_at,
+         points: parent.points
       }
     end
   end

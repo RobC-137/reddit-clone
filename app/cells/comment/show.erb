@@ -1,27 +1,42 @@
-<div style=" padding-left: <%= 5*depth %>px; padding-top: 10px; ">
-    <div >
-        <span class="comment-username">
-            <%= username %>
-        </span>
-        <span class="comment-time-from">
-            <%= time_ago_in_words created_at %>
-        </span>
+<div class="row">
+    <div style="width: 32px; margin-left: 10px; marging-top: 5px">
+        <div>
+            <i class="bi bi-arrow-up"></i>
+        </div>
+        <div>
+            <i class="bi bi-arrow-down"></i>
+        </div>
     </div>
-    <div id="comment-<%= id %>">
-        <%= content %>
-        <%= link_to 'Reply', 
-            {controller: "comments", action: "new", parent_id: id}, 
-            remote: true, 
-            style: 'font-size: small', 
-            id: "reply-link-comment-#{id}",
-            :onclick => 'disableLink(this)'
-        %>
-    </div>
-    <% if children&.any? %>
-        <% children.each do |child| %>
-            <div style="border-left: 1px solid gray;">
-                <%= cell(CommentCell, child) %>
+    <div class="col-md-10">
+        <div style=" padding-left: <%= 5*depth %>px; padding-bottom: 10px; ">
+            <div >
+                <span class="comment-username">
+                    <%= username %>
+                </span>
+                <span class="comment-points">
+                    <%= "#{points} points"%>
+                </span>
+                <span class="comment-time-from">
+                    <%= time_ago_in_words created_at %>
+                </span>
             </div>
-        <% end %>
-    <% end %>
+            <div id="comment-<%= id %>">
+                <%= content %>
+                <%= link_to 'Reply', 
+                    {controller: "comments", action: "new", parent_id: id}, 
+                    remote: true, 
+                    style: 'font-size: small', 
+                    id: "reply-link-comment-#{id}",
+                    :onclick => 'disableLink(this)'
+                %>
+            </div>
+            <% if children&.any? %>
+                <% children.each do |child| %>
+                    <div style="border-left: 1px solid gray; margin-top: 10px">
+                        <%= cell(CommentCell, child) %>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
 </div>

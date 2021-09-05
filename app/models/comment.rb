@@ -30,6 +30,6 @@ class Comment < ApplicationRecord
     has_many :votes, as: :votable
 
     def points
-        upvotes - downvotes
+        (upvotes.presence || 0) - (downvotes.presence || 0)
     end
 end

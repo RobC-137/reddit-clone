@@ -25,4 +25,8 @@ class CommentCell < ApplicationCell
         def created_at
             comment[:created_at]
         end
+
+        def points
+            comment[:points]
+        end
 end
