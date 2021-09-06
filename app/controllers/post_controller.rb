@@ -10,8 +10,11 @@ class PostController < ApplicationController
 
   def show
     @root_comment = Comment.roots.find_by(post_id: params[:id])
-    @comments = Comment.preload(:rich_text_content, :user).descendants_of(@root_comment).arrange_serializable do |parent, children|
+    @comments = Comment.preload(:rich_text_content, :user).descendants_of(@root_comment)
+    votes = Vote.where(user_id: current_user.id, votable_type: 'Comment', votable: @comments)
+    @serialized_comments = @comments.arrange_serializable do |parent, children|
       user = parent.user
+      vote = votes.find_by(votable_id: parent.id)
       {
          id: parent.id,
          children: children,
@@ -19,7 +22,8 @@ class PostController < ApplicationController
          depth: parent.depth,
          username: user&.username.presence || '[Deleted]',
          created_at: parent.created_at,
-         points: parent.points
+         points: parent.points,
+         voted: vote&.upvote,
       }
     end
   end

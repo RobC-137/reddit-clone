@@ -29,4 +29,24 @@ class CommentCell < ApplicationCell
         def points
             comment[:points]
         end
+
+        def voted
+            @voted ||= comment[:voted] 
+        end
+
+        def upvote
+            if voted
+                'vote-upvote'
+            else
+                'vote-neutral'
+            end
+        end
+
+        def downvote
+            if voted == false
+                'vote-downvote'
+            else
+                'vote-neutral'
+            end
+        end
 end

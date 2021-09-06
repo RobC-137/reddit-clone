@@ -1,10 +1,10 @@
 <div class="row">
     <div style="width: 32px; margin-left: 10px; marging-top: 5px">
         <div>
-            <%= link_to( "<i class='bi bi-caret-up-fill vote-neutral' id='upvote-#{id}'></i>", votes_vote_path({vote: {resource_type: 'comment', upvote: true, resource_id: id}}), remote: true, method: :post, ) %>
+            <%= link_to( "<i class='bi bi-caret-up-fill #{upvote}' id='upvote-#{id}'></i>", votes_vote_path({vote: {resource_type: 'comment', upvote: true, resource_id: id}}), remote: true, method: :post, ) %>
         </div>
         <div>
-            <%= link_to( "<i class='bi bi-caret-down-fill vote-neutral' id='downvote-#{id}'></i>", votes_vote_path({vote: {resource_type: 'comment', upvote: false, resource_id: id}}), remote: true, method: :post) %>
+            <%= link_to( "<i class='bi bi-caret-down-fill #{downvote}'' id='downvote-#{id}'></i>", votes_vote_path({vote: {resource_type: 'comment', upvote: false, resource_id: id}}), remote: true, method: :post) %>
         </div>
     </div>
     <div class="col-md-10">
