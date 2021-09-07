@@ -18,7 +18,7 @@ Turbolinks.start()
 ActiveStorage.start()
 
 document.addEventListener("turbolinks:load", () => {
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip({trigger: 'hover'});
     $('[data-toggle="popover"]').popover();
 })
 require("trix")

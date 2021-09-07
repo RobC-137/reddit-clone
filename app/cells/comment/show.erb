@@ -1,10 +1,10 @@
 <div class="row">
     <div style="width: 32px; margin-left: 10px; marging-top: 5px">
         <div>
-            <%= link_to( "<i class='bi bi-caret-up-fill #{upvote}' id='upvote-#{id}'></i>", votes_vote_path({vote: {resource_type: 'comment', upvote: true, resource_id: id}}), remote: true, method: :post, ) %>
+            <%= upvote_link %>
         </div>
         <div>
-            <%= link_to( "<i class='bi bi-caret-down-fill #{downvote}'' id='downvote-#{id}'></i>", votes_vote_path({vote: {resource_type: 'comment', upvote: false, resource_id: id}}), remote: true, method: :post) %>
+            <%= downvote_link %>
         </div>
     </div>
     <div class="col-md-10">
@@ -22,13 +22,7 @@
             </div>
             <div id="comment-<%= id %>">
                 <%= content %>
-                <%= link_to 'Reply', 
-                    {controller: "comments", action: "new", parent_id: id}, 
-                    remote: true, 
-                    style: 'font-size: small', 
-                    id: "reply-link-comment-#{id}",
-                    :onclick => 'disableLink(this)'
-                %>
+                <%= reply_link %>
             </div>
             <% if children&.any? %>
                 <% children.each do |child| %>
