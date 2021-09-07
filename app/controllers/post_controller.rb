@@ -11,10 +11,10 @@ class PostController < ApplicationController
   def show
     @root_comment = Comment.roots.find_by(post_id: params[:id])
     @comments = Comment.preload(:rich_text_content, :user).descendants_of(@root_comment)
-    votes = Vote.where(user_id: current_user.id, votable_type: 'Comment', votable: @comments)
+    votes = Vote.where(user_id: current_user.id, votable_type: 'Comment', votable: @comments) if user_signed_in?
     @serialized_comments = @comments.arrange_serializable do |parent, children|
       user = parent.user
-      vote = votes.find_by(votable_id: parent.id)
+      vote = votes&.find_by(votable_id: parent.id)
       {
          id: parent.id,
          children: children,
