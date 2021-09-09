@@ -29,10 +29,12 @@ class PostController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(**post_params, user: current_user)
+    @post.save
+    Comment.create(post_id: @post.id, user_id: current_user.id)
     respond_to do |format|
       if @post.save
-        format.html { redirect_to :root, notice: "Post was successfully created." }
+        format.html { redirect_to post_path(@post), notice: "Post was successfully created." }
         format.json { render :root, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
