@@ -14,7 +14,10 @@
                     <%= username %>
                 </span>
                 <span class="comment-points">
-                    <%= "#{points} points"%>
+                    <span  id="points-<%= id %>">
+                        <%= points %>
+                    </span>
+                    points
                 </span>
                 <span class="comment-time-from">
                     <%= time_ago_in_words created_at %>
