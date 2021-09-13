@@ -4,8 +4,8 @@
 #
 #  id         :integer          not null, primary key
 #  ancestry   :string
-#  downvotes  :integer
-#  upvotes    :integer
+#  downvotes  :integer          default(0), not null
+#  upvotes    :integer          default(0), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  post_id    :integer          not null
@@ -30,6 +30,6 @@ class Comment < ApplicationRecord
     has_many :votes, as: :votable
 
     def points
-        (upvotes.presence || 0) - (downvotes.presence || 0)
+        upvotes - downvotes
     end
 end
