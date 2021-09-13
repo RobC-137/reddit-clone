@@ -1,4 +1,4 @@
-<div class="card" style="width: 90%;">
+<div class="card post-card">
     <div class="row g-0">
         <div class="col-md-1" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
             <i class="bi bi-arrow-up"></i>
@@ -8,8 +8,14 @@
         <div class="col-md-10">
             <div class="card-body">
                 <%= link_to post.title, post_path(post), class: 'link-primary'%>
-                <h5 class="card-title"><%= post.title %></h5>
-                <p class="card-text"><%= post.description %></p>
+                <div class="submitted">
+                    <span>
+                        Submitted 
+                        <%= time_ago_in_words post.created_at%>
+                        ago by
+                        <%= post.user.username.presence || "[Deleted]" %>
+                    </span>
+                </div>
             </div>
         </div>
     </div>

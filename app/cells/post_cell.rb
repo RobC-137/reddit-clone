@@ -1,6 +1,6 @@
 class PostCell < ApplicationCell
     alias post model
-    def index
+    def card
         render
     end
 

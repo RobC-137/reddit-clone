@@ -1,7 +1,7 @@
 class PostController < ApplicationController
   before_action :set_post, only: %i[ show  ]
   def index
-    @posts = Post.all
+    @posts = Post.all.preload(:user)
   end
 
   def new

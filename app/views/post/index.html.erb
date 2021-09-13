@@ -1,7 +1,5 @@
-<h1>Post#index</h1>
-<p>Find me in app/views/post/index.html.erb</p>
-
-<% @posts.each do |post| %>
-    <%= cell(PostCell, post).(:index)%>
-    <%= post.title%>
-<% end %>
+<div class="posts-container">
+    <% @posts.each do |post| %>
+        <%= cell(PostCell, post).(:card)%>
+    <% end %>
+</div>
