@@ -10,7 +10,7 @@ class PostCell < ApplicationCell
         end
 
         def voted 
-            @voted ||= votes&.find_by(votable_id: post.id).upvote
+            @voted ||= votes&.find_by(votable_id: post.id)&.upvote
         end
 
         def upvote
