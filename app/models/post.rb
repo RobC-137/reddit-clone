@@ -22,6 +22,8 @@
 class Post < ApplicationRecord
   has_rich_text :content
   belongs_to :user
+  has_many :votes, as: :votable, dependent: :delete_all
+  has_many :comments, dependent: :delete_all
 
   def points
     upvotes - downvotes

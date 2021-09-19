@@ -10,7 +10,14 @@
             </div>
         <div>
             <div class="card-body">
-                <%= link_to post.title, post_path(post), class: 'link-primary'%>
+                <span>
+                    <%= link_to post.title, post_path(post), class: 'link-primary'%>
+                    <% if owner? %>
+                        <%= link_to(post_delete_path(post), method: :post) do %>
+                            <i class="bi bi-trash-fill delete-post"></i>
+                        <% end %>
+                    <% end %>
+                </span>
                 <div class="submitted">
                     <span>
                         Submitted 

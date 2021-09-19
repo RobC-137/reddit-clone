@@ -5,6 +5,11 @@ class PostCell < ApplicationCell
     end
 
     private 
+
+        def owner?
+            post.user.id == current_user&.id
+        end
+
         def votes
             @votes ||= options[:votes]
         end

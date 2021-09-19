@@ -1,5 +1,5 @@
 class PostController < ApplicationController
-  before_action :set_post, only: %i[ show  ]
+  before_action :set_post, only: [ :show, :delete ]
   def index
     @posts = Post.all.preload(:user)
     @votes = Vote.where(user_id: current_user.id, votable_type: 'Post', votable: @posts) if user_signed_in?
@@ -44,6 +44,18 @@ class PostController < ApplicationController
     end
 
   end
+
+  def delete
+    @post.destroy if @post.user.id == current_user.id
+    respond_to do |format|
+      if @post.persisted?
+        format.html { redirect_to post_index_path, notice: "Post was successfully deleted." }
+      else
+        format.html { redirect_to post_index_path, notice: "Post can not be deleted." }
+      end
+    end
+  end
+
   private
     def set_post
       @post = Post.find(params[:id])
