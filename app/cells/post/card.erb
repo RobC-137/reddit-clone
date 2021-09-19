@@ -1,11 +1,14 @@
 <div class="card post-card">
-    <div class="row g-0">
-        <div class="col-md-1" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-            <i class="bi bi-arrow-up"></i>
-            <%= post.points%>
-            <i class="bi bi-arrow-down"></i>
-        </div>
-        <div class="col-md-10">
+    <div class="post-card-inner-container g-0">
+            <div class="post-vote">
+                <div>
+                    <%= upvote_link %>
+                </div>
+                <div>
+                    <%= downvote_link %>
+                </div>
+            </div>
+        <div>
             <div class="card-body">
                 <%= link_to post.title, post_path(post), class: 'link-primary'%>
                 <div class="submitted">

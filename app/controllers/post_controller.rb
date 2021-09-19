@@ -2,6 +2,7 @@ class PostController < ApplicationController
   before_action :set_post, only: %i[ show  ]
   def index
     @posts = Post.all.preload(:user)
+    @votes = Vote.where(user_id: current_user.id, votable_type: 'Post', votable: @posts) if user_signed_in?
   end
 
   def new
