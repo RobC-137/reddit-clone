@@ -40,3 +40,23 @@
     display: flex;
     flex-direction: row;
 }
+
+.new-post-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    .field{
+        margin-top: 10px;
+    }
+    .new-post-footer{
+        margin-top: 10px;
+        display: flex;  
+        justify-content: space-between;
+        a{
+            text-decoration: none;
+            color: white;
+        }
+    }
+}

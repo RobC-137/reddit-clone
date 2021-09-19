@@ -1,4 +1,12 @@
 <div class="posts-container">
+    <% if current_user %>
+        <%= link_to post_new_path,  style: 'text-decoration: none' do %>
+            <span>
+                <i class="bi bi-plus-square"></i>
+                New Post
+            </span>
+        <% end %>
+    <% end %>
     <% @posts.each do |post| %>
         <%= cell(PostCell, post, votes: @votes).(:card)%>
     <% end %>
