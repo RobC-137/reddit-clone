@@ -3,7 +3,7 @@
     <h3>NEW POST</h3>
   </div>
 
-  <%= form_with model: @post, url:post_create_path do |form| %>
+  <%= form_with model: @post, url:post_create_path, class: "form-container" do |form| %>
     <div class="field"> 
       <%= form.label 'Title' %>
       <%= form.text_field  :title%>
