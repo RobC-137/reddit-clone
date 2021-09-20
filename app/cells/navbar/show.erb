@@ -2,17 +2,9 @@
     <div class="container-fluid">
         <%= link_to "Reddit Clone", root_path, :method => :get, class: 'navbar-brand'%>
     <% if current_user.nil? %>
-        <%= 
-            button_tag(type: 'button', class: 'btn btn-outline-success') do
-                link_to "Sign in", new_user_session_path, :method => :get, class: 'link-dark'
-            end
-        %>
+        <%= button_to "Sign in", new_user_session_path, :method => :get, class: 'btn btn-outline-success link-dark' %>
     <% else%>
-        <%= 
-            button_tag(type: 'button', class: 'btn btn-outline-success') do
-                link_to "Sign out", destroy_user_session_path, :method => :delete, class: 'link-dark'
-            end
-        %>
+        <%= button_to "Sign out", destroy_user_session_path, :method => :delete, class: 'btn btn-outline-success link-dark' %>
     <% end %>
     </div>
 </nav>
