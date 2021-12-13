@@ -5,13 +5,15 @@
     </h3>
     <%= @post.content %>
 </div>
-<div class="add-comment" id="comment-<%= @root_comment.id %>">
-    <%= link_to 'Add comment', 
-                {controller: "comments", action: "new", parent_id: @root_comment}, 
-                remote: true,
-                :onclick => 'disableLink(this)' 
-        %>
-</div>
+<% if current_user %>
+    <div class="add-comment" id="comment-<%= @root_comment.id %>">
+        <%= link_to 'Add comment', 
+                    {controller: "comments", action: "new", parent_id: @root_comment}, 
+                    remote: true,
+                    :onclick => 'disableLink(this)' 
+            %>
+    </div>
+<% end %>
 <% @serialized_comments.each do |comment| %>
     <div class="card comment-outer-container" >
         <div class="card-body">
